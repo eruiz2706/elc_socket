@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="our code world">
+
+      <title>Chat socket.io</title>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.0/socket.io.js"></script>
+  </head>
+
+  <div id='messages'></div>
+
+  <div>
+    Palabra a comparar&nbsp;<input type='text' id='palabraentrada' size='100'></input><br>
+    Palabra a decir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' id='palabrasalida' size='100'></input><br>
+    <input type='button' value="Start voice command" onclick="startArtyom()">
+    <input type='button' value="Stop voice command" onclick="stopArtyom()">
+    <input type='button' value="Start reed" onclick="startreedArtyom()">
+    <span id='output'></span>
+  </div>
+
+  <script>
+    /*var socket =io('http://localhost:6688',{'forceNew':true});
+    console.log('fasdho');
+    socket.on('messages',function(data){
+        console.log('dadta');
+    });*/
+
+    var socket = io('http://localhost:8081', { 'forceNew': true });
+    socket.on('get_notifi', function(data) {
+	    console.log(data);
+      var div = document.getElementById('output');
+      div.innerHTML += data+'<br>';
+    });
+
+
+    function startArtyom(){
+      //var palabraentrada   =document.getElementById('palabraentrada').value;
+
+      socket.emit('llegada',{'token':'123','mensaje':'hola mundo'});
+      console.log('dato emitido..');
+    }
+  </script>
+
+</html>
