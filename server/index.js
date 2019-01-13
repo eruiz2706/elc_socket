@@ -14,6 +14,11 @@ io.on('connection',socket=>{
       /*notificacion transmitida desde el servidor*/
       io.sockets.emit('notifi_serve',data);
     });
+
+    socket.on('private_message_cli', function ( data ) {
+		  socket.broadcast.emit( 'private_message_serve',data);
+      //console.log("private_message_serve=>"+data.mensaje);
+	 });
 });
 
 server.listen(8081,function(){
