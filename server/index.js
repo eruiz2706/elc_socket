@@ -17,7 +17,7 @@ io.on('connection',socket=>{
 
     socket.on('private_message_cli', function ( data ) {
 		  socket.broadcast.emit( 'private_message_serve',data);
-      //console.log("private_message_serve=>"+data.mensaje);
+      console.log("private_message_serve=>"+data.mensaje);
 	 });
 });
 
