@@ -10,7 +10,7 @@ io.on('connection',socket=>{
     /*captura la notificacion enviada por el cliente*/
     socket.on('notifi_cli',function(data){
       console.log("notifi_cli=>"+data);
-
+  
       /*notificacion transmitida desde el servidor*/
       io.sockets.emit('notifi_serve',data);
     });
